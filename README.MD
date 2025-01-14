@@ -101,7 +101,7 @@ https://www.mongodb.com/docs/atlas/tutorial/create-new-cluster/
 4. Cliquez sur `Confirm`
 5. Vous devriez voir apparaître votre adresse IP sur l'interface
 
-#### 4. Créez la base de données et les collections "books" et "categories"
+#### 5. Créez la base de données et les collections "books" et "categories"
 
 1. Sur le menu de gauche, rendez-vous sur `DATABASE > Clusters`
 2. Cliquez sur `Browse Collections`
@@ -112,7 +112,7 @@ https://www.mongodb.com/docs/atlas/tutorial/create-new-cluster/
 7. Répétez cette opération et entrez le nom de la deuxième collection : *categories*
 8. Vous devriez voir apparaître vos 2 collections dans votre base de données
 
-### 5. Lancez le serveur
+### 6. Lancez le serveur
 
 Une fois la base de données créée et configurée, vous devez lancer le serveur :
 
@@ -130,12 +130,12 @@ yarn start
 
 Vous pouvez maintenant ouvrir votre navigateur et accéder à l'application via l'URL suivante :
 
-> [!WARNING]
-> Entrez le numéro de port que vous avez configuré dans le `.env`
-
 ```bash
 http://127.0.0.1:<port>
 ```
+
+> [!WARNING]
+> Remplacez <port> par ce que vous avez configuré dans le `.env` (3000 par défaut)
 
 ## 🏗️ Structure du projet
 ```
