@@ -135,7 +135,7 @@ http://127.0.0.1:<port>
 ```
 
 > [!WARNING]
-> Remplacez <port> par ce que vous avez configuré dans le `.env` (3000 par défaut)
+> Remplacez **<port>** par ce que vous avez configuré dans le `.env` (3000 par défaut)
 
 ## 🏗️ Structure du projet
 ```
