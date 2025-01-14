@@ -14,10 +14,10 @@ Voici quelques captures d'écran de l'application en action :
 <img src="./assets/screenshots/book_details.PNG" alt="Détails d'un livre"/>
 
 ### Page de gestion des catégories
-<img src="./assets/screenshots/categories_page.PNG" alt="Gestion des catégories"/>
+<img src="assets/screenshots/category_page.PNG" alt="Gestion des catégories"/>
 
 ### Page des détails d'une catégorie
-<img src="./assets/screenshots/categories_details.PNG" alt="Détails d'une catégorie"/>
+<img src="assets/screenshots/category_details.PNG" alt="Détails d'une catégorie"/>
 
 ## ✨ Fonctionnalités principales
 * **Gestion des livres** : Ajouter, modifier, supprimer et consulter des livres.
@@ -181,7 +181,13 @@ library-manager/
 │       │   └── single.ejs   
 │       ├── partials/
 │       │   └── head.ejs
-│       └── errors.ejs              
+│       └── errors.ejs
+├── assets/
+│   └── screenshots/ 
+│       ├── book_details.PNG
+│       ├── book_page.PNG
+│       ├── category_details.PNG 
+│       └── category_page.PNG               
 ├── node_modules/           # Ignoré par Git (spécifié dans .gitignore)
 ├── public/
 │   └── css/
