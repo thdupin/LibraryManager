@@ -7,10 +7,10 @@ Ce projet consiste à développer une application web de gestion de livres en ut
 
 Voici quelques captures d'écran de l'application en action :
 
-![Gestion des livres](assets/screenshots/book_page.png)
-![Détails d'un livre](assets/screenshots/book_details.png)
-![Gestion des catégories](assets/screenshots/categories_page.png)
-![Détails d'une catégorie](assets/screenshots/categories_details.png)
+<img src="./assets/screenshots/book_page.PNG" alt="Gestion des livres"/>
+<img src="./assets/screenshots/book_details.PNG" alt="Détails d'un livre"/>
+<img src="./assets/screenshots/categories_page.PNG" alt="Gestion des catégories"/>
+<img src="./assets/screenshots/categories_details.PNG" alt="Détails d'une catégorie"/>
 
 ## ✨ Fonctionnalités principales
 * **Gestion des livres** : Ajouter, modifier, supprimer et consulter des livres.
