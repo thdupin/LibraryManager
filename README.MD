@@ -194,7 +194,8 @@ library-manager/
 │       └── tailwind.css
 ├── .env                    # Ignoré par Git (spécifié dans .gitignore)
 ├── .env.example
-├── .gitignore 
+├── .gitignore
+├── LICENSE.txt 
 ├── package.json
 ├── package-lock.json
 ├── postcss.config.json
