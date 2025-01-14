@@ -3,6 +3,15 @@
 ## 📝 Contexte
 Ce projet consiste à développer une application web de gestion de livres en utilisant Node.js, Express, MongoDB et EJS. L'application permet de gérer facilement les livres et leurs catégories, tout en offrant des fonctionnalités intuitives pour les utilisateurs.
 
+## 🖥️ Interface Utilisateur (UI)
+
+Voici quelques captures d'écran de l'application en action :
+
+![Gestion des livres](assets/screenshots/book_page.png)
+![Détails d'un livre](assets/screenshots/book_details.png)
+![Gestion des catégories](assets/screenshots/categories_page.png)
+![Détails d'une catégorie](assets/screenshots/categories_details.png)
+
 ## ✨ Fonctionnalités principales
 * **Gestion des livres** : Ajouter, modifier, supprimer et consulter des livres.
 * **Catégories** : Associer des livres à des catégories et les gérer individuellement.
