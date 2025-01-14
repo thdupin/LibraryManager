@@ -1,0 +1,67 @@
+<body class="bg-gray-50">
+<div class="min-h-screen py-12">
+    <div class="container mx-auto px-4">
+        <!-- Card Container -->
+        <div class="max-w-2xl mx-auto bg-white rounded-lg shadow-lg overflow-hidden">
+            <!-- Header -->
+            <div class="bg-gradient-to-r from-blue-600 to-indigo-700 px-6 py-4">
+                <h2 class="text-2xl font-bold text-white">
+                    <%= category && category._id ? 'Modifier la catégorie' : 'Ajouter une nouvelle catégorie' %>
+                </h2>
+            </div>
+
+            <!-- Form -->
+            <form action="<%= action %>" method="POST" class="p-6 space-y-6">
+                <!-- Name Field -->
+                <div class="space-y-2">
+                    <label for="name" class="text-sm font-medium text-gray-700 flex items-center">
+                        Nom
+                    </label>
+                    <div class="relative">
+                        <input
+                                type="text"
+                                id="name"
+                                name="name"
+                                value="<%= category && category.name %>"
+                                required
+                                class="block w-full px-4 py-3 rounded-lg border-gray-300 focus:ring-blue-500 focus:border-blue-500 text-gray-900"
+                                placeholder="Entrez le nom de la catégorie"
+                        >
+                    </div>
+                </div>
+
+                <!-- Description Field -->
+                <div class="space-y-2">
+                    <label for="description" class="text-sm font-medium text-gray-700 flex items-center">
+                        Description
+                    </label>
+                    <div class="relative">
+                        <textarea
+                                type="text"
+                                id="description"
+                                name="description"
+                                placeholder="Entrez le nom de la description"
+                                class="block w-full px-4 py-3 rounded-lg border-gray-300 focus:ring-blue-500 focus:border-blue-500 text-gray-900"><%= category && category.description %></textarea>
+                    </div>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="flex items-center space-x-4 pt-4">
+                    <button
+                            type="submit"
+                            class="flex-1 px-6 py-3 text-sm font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-300"
+                    >
+                        <%= category && category._id ? 'Mettre à jour' : 'Ajouter' %> la catégorie
+                    </button>
+                    <a
+                            href="/categories"
+                            class="flex-1 px-6 py-3 text-sm font-medium text-gray-700 bg-gray-100 rounded-lg hover:bg-gray-200 focus:outline-none focus:ring-4 focus:ring-gray-200 text-center"
+                    >
+                        Annuler
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>

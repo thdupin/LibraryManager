@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <%- include('../partials/head', {title: 'Livre ' + book.title }); %>
+</head>
+<body class="bg-gray-50">
+<div class="min-h-screen py-12">
+    <div class="container mx-auto px-4">
+        <!-- Navigation -->
+        <nav class="mb-8">
+            <a href="/books" class="inline-flex items-center text-blue-600 hover:text-blue-700">
+                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                </svg>
+                Retour à la liste des livres
+            </a>
+        </nav>
+
+        <!-- Book Details Card -->
+        <div class="bg-white w-full rounded-lg shadow-lg overflow-hidden animate__animated animate__fadeIn">
+            <div class="md:flex">
+                <!-- Image Section -->
+                <div class="w-3/4 md:w-1/4 bg-gradient-to-br from-blue-100 to-indigo-100">
+                    <img src="<%= book.imgUrl || '/api/placeholder/400/600' %>"
+                         alt="Couverture de <%= book.title %>"
+                         class="object-cover h-full w-full">
+                </div>
+
+                <!-- Content Section -->
+                <div class="md:w-full p-8">
+                    <!-- Status Badge -->
+                    <div class="flex justify-between items-start mb-6">
+                            <span class="px-4 py-2 text-sm font-semibold <%= book.status ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800' %> rounded-full">
+                                <%= book.status ? 'Disponible' : 'Indisponible' %>
+                            </span>
+                        <!-- Actions Dropdown -->
+                        <div class="relative" data-dropdown-toggle="bookActions">
+                            <button class="p-2 text-gray-500 hover:text-gray-700 rounded-lg hover:bg-gray-100">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z"></path>
+                                </svg>
+                            </button>
+                            <!-- Dropdown menu -->
+                            <div id="bookActions" class="hidden absolute right-0 z-10 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5">
+                                <div class="py-1">
+                                    <a href="/books/<%= book._id %>/edit" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                                        Modifier le livre
+                                    </a>
+                                    <form action="/books/<%= book._id %>/delete" method="POST" class="block">
+                                        <button type="submit" class="w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-gray-100" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce livre ?')">
+                                            Supprimer le livre
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Book Info -->
+                    <h1 class="text-3xl font-bold text-gray-900 mb-4"><%= book.title %></h1>
+
+                    <div class="space-y-6">
+                        <!-- Author -->
+                        <div class="flex items-center space-x-1">
+                            <svg class="w-5 h-5 text-gray-400 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+                            </svg>
+                            <div>
+                                <p class="text-sm text-gray-500">Auteur</p>
+                                <p class="text-lg text-gray-900"><%= book.author %></p>
+                            </div>
+                        </div>
+
+                        <!-- Category -->
+                        <div class="flex items-center space-x-1">
+                            <svg class="w-5 h-5 text-gray-400 mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"></path>
+                            </svg>
+                            <div>
+                                <p class="text-sm text-gray-500">Catégorie</p>
+                                <p class="text-lg text-gray-900"><%= book.category ? book.category.name : 'Sans catégorie' %></p>
+                                <% if (book.category && book.category.description) { %>
+                                    <p class="text-sm text-gray-500 mt-1"><%= book.category.description %></p>
+                                <% } %>
+                            </div>
+                        </div>
+
+                        <!-- Dates -->
+                        <div class="grid grid-cols-2 gap-4 border-t pt-6 mt-6">
+                            <div>
+                                <p class="text-sm text-gray-500">Ajouté le</p>
+                                <p class="text-base text-gray-900">
+                                    <%= new Date(book.createdAt).toLocaleDateString('fr-FR', {
+                                        year: 'numeric',
+                                        month: 'long',
+                                        day: 'numeric'
+                                    }) %>
+                                </p>
+                            </div>
+                            <div>
+                                <p class="text-sm text-gray-500">Dernière modification</p>
+                                <p class="text-base text-gray-900">
+                                    <%= new Date(book.updatedAt).toLocaleDateString('fr-FR', {
+                                        year: 'numeric',
+                                        month: 'long',
+                                        day: 'numeric'
+                                    }) %>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

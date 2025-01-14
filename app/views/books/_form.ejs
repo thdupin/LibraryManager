@@ -1,0 +1,135 @@
+<body class="bg-gray-50">
+<div class="min-h-screen py-12">
+    <div class="container mx-auto px-4">
+        <!-- Card Container -->
+        <div class="max-w-2xl mx-auto bg-white rounded-lg shadow-lg overflow-hidden">
+            <!-- Header -->
+            <div class="bg-gradient-to-r from-blue-600 to-indigo-700 px-6 py-4">
+                <h2 class="text-2xl font-bold text-white">
+                    <%= book && book._id ? 'Modifier le livre' : 'Ajouter un nouveau livre' %>
+                </h2>
+            </div>
+
+            <!-- Form -->
+            <form action="<%= action %>" method="POST" class="p-6 space-y-6">
+                <!-- Title Field -->
+                <div class="space-y-2">
+                    <label for="title" class="text-sm font-medium text-gray-700 flex items-center">
+                        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                        </svg>
+                        Titre du livre
+                    </label>
+                    <div class="relative">
+                        <input
+                                type="text"
+                                id="title"
+                                name="title"
+                                value="<%= book && book.title %>"
+                                required
+                                class="block w-full px-4 py-3 rounded-lg border-gray-300 focus:ring-blue-500 focus:border-blue-500 text-gray-900"
+                                placeholder="Entrez le titre du livre"
+                        >
+                    </div>
+                </div>
+
+                <!-- Image URL Field -->
+                <div class="space-y-2">
+                    <label for="imgUrl" class="text-sm font-medium text-gray-700 flex items-center">
+                        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                        </svg>
+                        Image du livre
+                    </label>
+                    <div class="relative">
+                        <input
+                                type="url"
+                                id="imgUrl"
+                                name="imgUrl"
+                                value="<%= book && book.imgUrl %>"
+                                class="block w-full px-4 py-3 rounded-lg border-gray-300 focus:ring-blue-500 focus:border-blue-500 text-gray-900"
+                                placeholder="https://exemple.com/image.jpg"
+                        >
+                    </div>
+                    <p class="text-sm text-gray-500">Entrez l'URL d'une image pour la couverture du livre</p>
+                </div>
+
+                <!-- Author Field -->
+                <div class="space-y-2">
+                    <label for="author" class="text-sm font-medium text-gray-700 flex items-center">
+                        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+                        </svg>
+                        Auteur
+                    </label>
+                    <div class="relative">
+                        <input
+                                type="text"
+                                id="author"
+                                name="author"
+                                value="<%= book && book.author %>"
+                                required
+                                class="block w-full px-4 py-3 rounded-lg border-gray-300 focus:ring-blue-500 focus:border-blue-500 text-gray-900"
+                                placeholder="Nom de l'auteur"
+                        >
+                    </div>
+                </div>
+
+                <!-- Category Field -->
+                <div class="space-y-2">
+                    <label for="category" class="text-sm font-medium text-gray-700 flex items-center">
+                        <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"></path>
+                        </svg>
+                        Catégorie
+                    </label>
+                    <select
+                            id="category"
+                            name="category"
+                            class="block w-full px-4 py-3 rounded-lg border-gray-300 focus:ring-blue-500 focus:border-blue-500 text-gray-900"
+                    >
+                        <option value="" <%= !book || !book.category ? 'selected' : '' %>>Sélectionnez une catégorie</option>
+                        <% categories.forEach(category => { %>
+                            <option
+                                    value="<%= category._id %>"
+                                    <%= book && book.category && book.category._id.toString() === category._id.toString() ? 'selected' : '' %>
+                            >
+                                <%= category.name %>
+                            </option>
+                        <% }); %>
+                    </select>
+                </div>
+
+                <!-- Status Field -->
+                <div class="space-y-2">
+                    <label class="inline-flex items-center">
+                        <input
+                                type="checkbox"
+                                name="status"
+                                <%= book && book.status ? 'checked' : '' %>
+                                class="rounded border-gray-300 text-blue-600 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
+                        >
+                        <span class="ml-2 text-sm text-gray-700">Livre disponible</span>
+                    </label>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="flex items-center space-x-4 pt-4">
+                    <button
+                            type="submit"
+                            class="flex-1 px-6 py-3 text-sm font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-300"
+                    >
+                        <%= book && book._id ? 'Mettre à jour' : 'Ajouter' %> le livre
+                    </button>
+                    <a
+                            href="/books"
+                            class="flex-1 px-6 py-3 text-sm font-medium text-gray-700 bg-gray-100 rounded-lg hover:bg-gray-200 focus:outline-none focus:ring-4 focus:ring-gray-200 text-center"
+                    >
+                        Annuler
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <%- include('../partials/head', { title: 'Modification de livre' }); %>
+</head>
+<body class="bg-gray-100">
+
+<div class="container mx-auto p-6">
+    <!-- Formulaire de nouvelle tâche -->
+    <div class="w-full mx-auto bg-white p-6 rounded-lg shadow-lg">
+        <!-- Formulaire inclus -->
+        <%- include('./_form', {action: '/books/' + book._id + '/update', book: book }); %>
+    </div>
+</div>
+
+</body>
+</html>
