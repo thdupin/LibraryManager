@@ -1,4 +1,4 @@
-# 🌐Gestionnaire d'une bibliothèque en ligne 📚
+# 🌐 LibraryManager 📚
 
 ## 📝 Contexte
 Ce projet consiste à développer une application web de gestion de livres en utilisant Node.js, Express, MongoDB et EJS. L'application permet de gérer facilement les livres et leurs catégories, tout en offrant des fonctionnalités intuitives pour les utilisateurs.
